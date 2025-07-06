@@ -14,6 +14,7 @@ Team 15
 
 # Proje
 ## Ürün İsmi
+BeniTeşhisEt
 ## Ürün Açıklaması
 Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama becerilerini geliştirmeleri için tasarlanmış, yapay zeka destekli bir hasta simülasyon uygulaması. Öğrenci doktor rolünde olurken, chatbot sanal hasta olarak semptomlarını anlatır, öğrenci soru sorabilir, tahlil isteyebilir ve vaka yönetimi pratiği yapabilir.
 ## Ürün Özellikleri
