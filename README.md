@@ -4,11 +4,13 @@ Team 15
 
 ## Takım Logosu
 
+![image](https://github.com/user-attachments/assets/101065e6-1023-4862-9f88-d8f11a6d2585)
+
 # Takım Elemanları
-- İrem Ayşe Kayacıoğlu: Scrum Master
-- Saadet Demir:
-- Zeynep Bilgili:
-- Kenan Güzel:
+- **İrem Ayşe Kayacıoğlu**: Scrum Master
+- **Saadet Demir**: Product Owner
+- **Zeynep Bilgili**: Developer
+- **Kenan Güzel**: Developer
 
 # Proje
 ## Ürün İsmi
@@ -37,9 +39,10 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 ![image](https://github.com/user-attachments/assets/7daeae32-a1ba-46ac-a1cd-3ab0a81625f0)
 
 ### Sprint Review
-Henüz ürün çıktımız olmadığı için sürece ve geleceğe odaklandık. 
+User stories ve uygulamadan beklediklerimizi oturtmaya çalıştık. Oyunlaştırmayla ilgili çeşitli öğelerin eklenmesi tartışıldı. Şimdilik Scope dışı olduğuna karar verildi. Henüz ürün çıktımız olmadığı için sürece ve geleceğe odaklandık. 
 ### Sprint Retrospective
-
+Sürece çok geç başladık ancak toplanabildiğimiz andan itibaren herkes aktif davrandı ve gayet çabuk karar alabildik. Daha sıkı çalışarak kaybolan zamanı telafi edebileceğimize karar verdik.
+Her sprintin ilk pazartesi günü "Sprint Planning"'de bir araya gelip hedefleri kararlaştırmaya ve iş parçalarını birlikte puanlandıracağız. Paralel çalışabilmek için sorumluluklar kişi bazlı atanacak ve dailyler ile takip edilecek. Cuma günleri ürünün gelişimi değerlendirilecek ve 2. cumartesi Retrospective yapılacak.
 ## Sprint 2
 - **Sprint Notları:**
 - **Sprint İçinde Tamamlanması Tahmin Edilen Puan:**
