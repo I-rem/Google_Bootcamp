@@ -4,7 +4,7 @@ Team 15
 
 ## Takım Logosu
 
-![image](https://github.com/user-attachments/assets/101065e6-1023-4862-9f88-d8f11a6d2585)
+![image](https://github.com/user-attachments/assets/c94b2927-7b03-4be6-bc35-78d109b3735c)
 
 # Takım Elemanları
 - **İrem Ayşe Kayacıoğlu**: Scrum Master
