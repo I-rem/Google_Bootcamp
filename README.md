@@ -15,6 +15,9 @@ Team 15
 ## Ürün Açıklaması
 Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama becerilerini geliştirmeleri için tasarlanmış, yapay zeka destekli bir hasta simülasyon uygulaması. Öğrenci doktor rolünde olurken, chatbot sanal hasta olarak semptomlarını anlatır, öğrenci soru sorabilir, tahlil isteyebilir ve vaka yönetimi pratiği yapabilir.
 ## Ürün Özellikleri
+- Chatbot Hasta Simülasyonu: Öğrencinin sorularına göre hasta semptomlarını anlatan AI.
+- Tahlil/Test Modülü: Öğrencinin istediği tetkiklerin sonuçlarını sunar.
+- Eğitim Raporları: Öğrencinin performansını ve doğru/yanlış teşhislerini raporlar.
 ## Hedef Kitle
 
 - Tıp Fakültesi öğrencileri
@@ -25,13 +28,16 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 ## Backlog URL
 [Trello Linkimiz](https://trello.com/b/9t5014dP/team-15)
 ## Sprint 1
-- **Sprint Notları:**
-- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:**
-- **Puan Tamamlama Mantığı:**
-- **Daily Scrum:**
+- **Sprint Notları:** Takım üyelerinin final haftasında olduğu için ilk toplantımızı takım değiştirme haftasından sonra yapmaya karar verdik. Sprinting geç başlaması ve düzenin yeni oturması nedeniyle velocity'miz düşük kaldı. Pazar araştırılması yapıldı, takım üyelerinin tecrübeleri değerlendirildi, proje fikri belirlendi, roller atandı, toplantı düzeni belirlendi.
+- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:** 18 story point
+- **Puan Tamamlama Mantığı:** Fibonacci ölçeği 5 kişilik bir ekiple haftada kişi başı ortalama 4 puan ile sprint başına 40 puan düşünüldü. Ancak ekipten bir kişinin eksilmesi ve Sprintin geç başlamasıyla hedefi daha gerçekçi olmak adına düşürdük.
+- **Daily Scrum:** Daily toplantılar yerine günlük whatsapp konuşmaları ve Trello'da yapılan güncellemelerle o günki iş/blok durumunu takip etmeye karar verdik. 
 
 ### Sprint Board
+![image](https://github.com/user-attachments/assets/7daeae32-a1ba-46ac-a1cd-3ab0a81625f0)
+
 ### Sprint Review
+Henüz ürün çıktımız olmadığı için sürece ve geleceğe odaklandık. 
 ### Sprint Retrospective
 
 ## Sprint 2
