@@ -39,6 +39,11 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 ### Sprint Board
 ![image](https://github.com/user-attachments/assets/7daeae32-a1ba-46ac-a1cd-3ab0a81625f0)
 
+### Ürün Durumu: Ekran Görüntüleri
+## Figma Tasarımları
+![image](https://github.com/user-attachments/assets/6c5f983c-22aa-42b4-b804-0596e6a7eb19)
+![image](https://github.com/user-attachments/assets/d297e0de-6c2e-4be7-ab51-5d5939475650)
+
 ### Sprint Review
 User stories ve uygulamadan beklediklerimizi oturtmaya çalıştık. Oyunlaştırmayla ilgili çeşitli öğelerin eklenmesi tartışıldı. Şimdilik Scope dışı olduğuna karar verildi. Henüz ürün çıktımız olmadığı için sürece ve geleceğe odaklandık. 
 ### Sprint Retrospective
