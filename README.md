@@ -36,6 +36,7 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 - **Puan Tamamlama Mantığı:** Fibonacci ölçeği 5 kişilik bir ekiple haftada kişi başı ortalama 4 puan ile sprint başına 40 puan düşünüldü. Ancak ekipten bir kişinin eksilmesi ve Sprintin geç başlamasıyla hedefi daha gerçekçi olmak adına düşürdük.
 - **Daily Scrum:** Daily toplantılar yerine günlük whatsapp konuşmaları ve Trello'da yapılan güncellemelerle o gün ve haftanın iş/blok durumunu takip etmeye karar verdik. 
 ![image](https://github.com/user-attachments/assets/57e7544f-1f6d-4feb-9eb2-ec5d712d62fa)
+![image](https://github.com/user-attachments/assets/8ac5e352-2c88-4a76-9f69-031fc43eeec8)
 
 ### Sprint Board
 ![image](https://github.com/user-attachments/assets/7daeae32-a1ba-46ac-a1cd-3ab0a81625f0)
