@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/6cccb352-e92d-4597-80fa-28812ebaa94e)# Takım
+# Takım
 ## Takım İsmi
 Team 15
 
