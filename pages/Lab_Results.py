@@ -20,7 +20,6 @@ for test_name in lab_tests:
             st.session_state.ordered_tests.append(test_name)
             st.success(f"{test_name} istendi.")
 
-# Show ordered test results
 if st.session_state.ordered_tests:
     st.markdown("### Sonuçlar:")
     for test in st.session_state.ordered_tests:

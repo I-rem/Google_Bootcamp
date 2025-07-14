@@ -2,7 +2,6 @@ import streamlit as st
 
 st.title("📋 Vaka Seçimi")
 
-# Define rich patient cases
 cases = [
     {
         "id": 1,
