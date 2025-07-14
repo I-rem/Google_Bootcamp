@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints
+
+# macOS / Linux / Windows
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Log files
+*.log
+
+# OS generated files
+*.swp
+*.swo
+
+# Compiled C extensions
+*.so
