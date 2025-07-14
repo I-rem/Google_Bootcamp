@@ -6,23 +6,25 @@ if "selected_case" not in st.session_state:
     st.warning("Lütfen önce bir vaka seçin.")
     st.stop()
 
-# Dummy lab tests
-lab_tests = {
-    "Tam Kan Sayımı": "Hb: 13.5 g/dL, WBC: 8.2, PLT: 250k",
-    "CRP": "4.2 mg/L",
-    "BUN/Kreatinin": "BUN: 15, Cr: 0.9",
-}
+case = st.session_state.selected_case
+lab_tests = case.get("lab_results", {})
 
 if "ordered_tests" not in st.session_state:
     st.session_state.ordered_tests = []
 
-st.markdown("İsteyebileceğiniz testler:")
+st.markdown("### İsteyebileceğiniz Testler:")
 
-for test, result in lab_tests.items():
-    if test not in st.session_state.ordered_tests:
-        if st.button(f"{test} iste"):
-            st.session_state.ordered_tests.append(test)
+for test_name in lab_tests:
+    if test_name not in st.session_state.ordered_tests:
+        if st.button(f"🧾 {test_name} iste"):
+            st.session_state.ordered_tests.append(test_name)
+            st.success(f"{test_name} istendi.")
 
-st.markdown("### Sonuçlar:")
-for test in st.session_state.ordered_tests:
-    st.markdown(f"**{test}:** {lab_tests[test]}")
+# Show ordered test results
+if st.session_state.ordered_tests:
+    st.markdown("### Sonuçlar:")
+    for test in st.session_state.ordered_tests:
+        result = lab_tests[test]
+        st.markdown(f"**{test}:** {result}")
+else:
+    st.info("Henüz test istemediniz.")
