@@ -1,3 +1,9 @@
+# How to run
+
+`pip install -r requirements`
+
+`streamlit run app.py`
+
 # Takım
 ## Takım İsmi
 Team 15
