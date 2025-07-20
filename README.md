@@ -75,6 +75,11 @@ Uygulamanın temel işlevselliğini oluşturuldu: vaka seçimi, hasta ile konuş
 
 ### Sprint Board
 ### Ürün Durumu: Ekran Görüntüleri
+<img width="507" height="772" alt="image" src="https://github.com/user-attachments/assets/3a7c732f-6db5-4235-85da-f0efca7659fe" />
+<img width="795" height="305" alt="image" src="https://github.com/user-attachments/assets/b8abc9f1-a860-45fa-9b87-66b42be32707" />
+<img width="1059" height="507" alt="image" src="https://github.com/user-attachments/assets/8e892477-2374-446d-91a5-aeb2fa8a0231" />
+<img width="831" height="481" alt="image" src="https://github.com/user-attachments/assets/81985c4a-db37-409a-b087-13620e7c551c" />
+
 ### Sprint Review
 Streamlit tercih edilerek temel fonksiyonlar gerçeklendi, kullanıcı etkileşimli temel yapılar hızlı kuruldu. Gemini entegre yapay hasta deneyimi başarılı oldu Feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
 
