@@ -38,7 +38,7 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 [Trello Linkimiz](https://trello.com/b/9t5014dP/team-15)
 ## Sprint 1
 - **Sprint Notları:** Takım üyelerinin final haftasında olduğu için ilk toplantımızı takım değiştirme haftasından sonra yapmaya karar verdik. Sprinting geç başlaması ve düzenin yeni oturması nedeniyle velocity'miz düşük kaldı. Pazar araştırılması yapıldı, takım üyelerinin tecrübeleri değerlendirildi, proje fikri belirlendi, roller atandı, toplantı düzeni belirlendi.
-- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:** 18 story point
+- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:** 18 story points
 - **Puan Tamamlama Mantığı:** Fibonacci ölçeği 5 kişilik bir ekiple haftada kişi başı ortalama 4 puan ile sprint başına 40 puan düşünüldü. Ancak ekipten bir kişinin eksilmesi ve Sprintin geç başlamasıyla hedefi daha gerçekçi olmak adına düşürdük.
 - **Daily Scrum:** Daily toplantılar yerine günlük whatsapp konuşmaları ve Trello'da yapılan güncellemelerle o gün ve haftanın iş/blok durumunu takip etmeye karar verdik. 
 ![image](https://github.com/user-attachments/assets/57e7544f-1f6d-4feb-9eb2-ec5d712d62fa)
@@ -61,18 +61,31 @@ Sürece çok geç başladık ancak toplanabildiğimiz andan itibaren herkes akti
 Her sprintin ilk pazartesi günü "Sprint Planning"'de bir araya gelip hedefleri kararlaştırmaya ve iş parçalarını birlikte puanlandıracağız. Paralel çalışabilmek için sorumluluklar kişi bazlı atanacak ve dailyler ile takip edilecek. Cuma günleri ürünün gelişimi değerlendirilecek ve 2. cumartesi Retrospective yapılacak.
 ## Sprint 2
 - **Sprint Notları:**
-- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:**
+Uygulamanın temel işlevselliğini oluşturuldu: vaka seçimi, hasta ile konuşma, laboratuvar sonuçları, ve yapay zeka entegrasyonunun.
+- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:** 25 story points
+- **Puan Tamamlama Mantığı:**
+  -  Ana sayfanın kullanıcıyı karşılaması                     1
+  - Kullanıcının vaka listesinden vaka seçebilmesi            3
+  - Kullanıcının hastayla basit konuşma gerçekleştirebilmesi  3
+  - Laboratuvar testlerinin istenip sonuçlarının gösterilmesi 5
+  - Streamlit ile çok sayfalı yapı kurulması                  3 
+  - Gemini entegrasyonu ve prompt ile cevap üretilmesi        8 
+
 - **Daily Scrum:**
 
 ### Sprint Board
 ### Ürün Durumu: Ekran Görüntüleri
 ### Sprint Review
-Streamlit tercih edilerek temel fonksiyonlar gerçeklendi. Feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
+Streamlit tercih edilerek temel fonksiyonlar gerçeklendi, kullanıcı etkileşimli temel yapılar hızlı kuruldu. Gemini entegre yapay hasta deneyimi başarılı oldu Feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
+
+Tanı gönderme bölümünde hatalar var, geribildirim bölümü ise henüz tamamlanmadı. Gemini kotasıyla ilgili bazı hatalar süreci yavaşlattı. Bu noktada hangi Gemini modelini seçeceğimiz, prompt tasarımını ne kadar detaylı yapacağımız konusunda deneme yanılma yonulma yoluyla çok şey öğrendik. Ayrıca geliştirme ortamıyla ilgili yaşadığınız sıkıntıların tekrar edilmemesi için bir kurulum rehberi yazılmasına karar verdik.
+
 Vakaları ne şekilde sunacağımız en önemli toplantı konularımızdan biriydi. Kullanıcı kitlesine daha faydalı bir ürün olması için Poliklinik bölümlerine göre kategorileri ayırmaya ve her bölüm için en az bir vaka sunmaya karar verdik.
-Geliştirme ortamıyla ilgili yaşadığınız sıkıntıların tekrar edilmemesi için bir kurulum rehberi yazılacak.
+
 ### Sprint Retrospective
 Okul ve iş yoğunlukları Backlogun birikmesine sebep oluyor. Storyleri belirlerken daha dikkatli olmalıyız.
-Bir önceki Sprinte göre daha yakın iletişimde kaldığımız bir süreç yönettik ve bu çıktıyı da olumlu etkiledi.
+Bir önceki Sprinte göre daha yakın iletişimde kaldığımız bir süreç yönettik ve bu çıktıyı da olumlu etkiledi. Streamlit yapısı çok hızlı kuruldu. Kullanıcı deneyimi netleşti. Gemini modeli başarıyla entegre edildi.
+
 Toplantı sıklıklarının ani bir gelişme olmadığı sürece aynı kalmasına karar verildi.
 Weekly özetlerinin daha aktif kullanılmasına karar verildi.
 ## Sprint 3
