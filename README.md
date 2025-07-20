@@ -79,6 +79,8 @@ Uygulamanın temel işlevselliğini oluşturuldu: vaka seçimi, hasta ile konuş
 <img width="631" height="399" alt="image" src="https://github.com/user-attachments/assets/719b674a-854d-482b-9246-e39a376cdf3e" />
 
 ### Sprint Board
+<img width="1424" height="668" alt="image" src="https://github.com/user-attachments/assets/a696c867-7604-4816-8119-cab5783d7608" />
+
 ### Ürün Durumu: Ekran Görüntüleri
 <img width="507" height="772" alt="image" src="https://github.com/user-attachments/assets/3a7c732f-6db5-4235-85da-f0efca7659fe" />
 <img width="795" height="305" alt="image" src="https://github.com/user-attachments/assets/b8abc9f1-a860-45fa-9b87-66b42be32707" />
