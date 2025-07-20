@@ -71,7 +71,12 @@ Uygulamanın temel işlevselliğini oluşturuldu: vaka seçimi, hasta ile konuş
   - Streamlit ile çok sayfalı yapı kurulması                  3 
   - Gemini entegrasyonu ve prompt ile cevap üretilmesi        8 
 
-- **Daily Scrum:**
+- **Daily Scrum:** Dailyleri hem birkaç günde bir hem de haftalık özetler şeklinde trello ve whatsapp üzerinden gerçekleştirdik.
+<img width="531" height="725" alt="image" src="https://github.com/user-attachments/assets/9c1ca4d3-5e60-4091-91bb-c12c6ed7a4ec" />
+<img width="610" height="448" alt="image" src="https://github.com/user-attachments/assets/2c6f174a-1394-4476-b5a3-2ac59b7c8ba7" />
+<img width="625" height="331" alt="image" src="https://github.com/user-attachments/assets/4ef55bfc-280c-4e35-a138-c943e53d8956" />
+<img width="387" height="246" alt="image" src="https://github.com/user-attachments/assets/1b7f8fef-f085-49de-a578-73bb104f22ff" />
+<img width="631" height="399" alt="image" src="https://github.com/user-attachments/assets/719b674a-854d-482b-9246-e39a376cdf3e" />
 
 ### Sprint Board
 ### Ürün Durumu: Ekran Görüntüleri
@@ -81,7 +86,7 @@ Uygulamanın temel işlevselliğini oluşturuldu: vaka seçimi, hasta ile konuş
 <img width="831" height="481" alt="image" src="https://github.com/user-attachments/assets/81985c4a-db37-409a-b087-13620e7c551c" />
 
 ### Sprint Review
-Streamlit tercih edilerek temel fonksiyonlar gerçeklendi, kullanıcı etkileşimli temel yapılar hızlı kuruldu. Gemini entegre yapay hasta deneyimi başarılı oldu Feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
+Streamlit tercih edilerek temel fonksiyonlar gerçeklendi, kullanıcı etkileşimli temel yapılar hızlı kuruldu. Gemini entegre yapay hasta deneyimi başarılı oldu feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
 
 Tanı gönderme bölümünde hatalar var, geribildirim bölümü ise henüz tamamlanmadı. Gemini kotasıyla ilgili bazı hatalar süreci yavaşlattı. Bu noktada hangi Gemini modelini seçeceğimiz, prompt tasarımını ne kadar detaylı yapacağımız konusunda deneme yanılma yonulma yoluyla çok şey öğrendik. Ayrıca geliştirme ortamıyla ilgili yaşadığınız sıkıntıların tekrar edilmemesi için bir kurulum rehberi yazılmasına karar verdik.
 
