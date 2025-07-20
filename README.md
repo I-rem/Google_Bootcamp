@@ -49,7 +49,7 @@ Tıp öğrencilerinin klinik düşünme, teşhis koyma ve tedavi planlama beceri
 ![image](https://github.com/user-attachments/assets/7daeae32-a1ba-46ac-a1cd-3ab0a81625f0)
 
 ### Ürün Durumu: Ekran Görüntüleri
-## Figma Tasarımları
+#### Figma Tasarımları
 ![image](https://github.com/user-attachments/assets/6c5f983c-22aa-42b4-b804-0596e6a7eb19)
 ![image](https://github.com/user-attachments/assets/d297e0de-6c2e-4be7-ab51-5d5939475650)
 ![image](https://github.com/user-attachments/assets/3f896525-abeb-4fb0-a1a6-352624bb2cff)
@@ -65,8 +65,16 @@ Her sprintin ilk pazartesi günü "Sprint Planning"'de bir araya gelip hedefleri
 - **Daily Scrum:**
 
 ### Sprint Board
+### Ürün Durumu: Ekran Görüntüleri
 ### Sprint Review
+Streamlit tercih edilerek temel fonksiyonlar gerçeklendi. Feature olarak sesli sohbet özelliği ön planda ancak öncelikle teknik hatalara ve vaka sayısı ve çeşidine odaklanılacak. 
+Vakaları ne şekilde sunacağımız en önemli toplantı konularımızdan biriydi. Kullanıcı kitlesine daha faydalı bir ürün olması için Poliklinik bölümlerine göre kategorileri ayırmaya ve her bölüm için en az bir vaka sunmaya karar verdik.
+Geliştirme ortamıyla ilgili yaşadığınız sıkıntıların tekrar edilmemesi için bir kurulum rehberi yazılacak.
 ### Sprint Retrospective
+Okul ve iş yoğunlukları Backlogun birikmesine sebep oluyor. Storyleri belirlerken daha dikkatli olmalıyız.
+Bir önceki Sprinte göre daha yakın iletişimde kaldığımız bir süreç yönettik ve bu çıktıyı da olumlu etkiledi.
+Toplantı sıklıklarının ani bir gelişme olmadığı sürece aynı kalmasına karar verildi.
+Weekly özetlerinin daha aktif kullanılmasına karar verildi.
 ## Sprint 3
 - **Sprint Notları:**
 - **Sprint İçinde Tamamlanması Tahmin Edilen Puan:**
