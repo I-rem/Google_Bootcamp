@@ -47,3 +47,18 @@ if submitted:
         st.session_state.score_breakdown = {"AI Klinik Yaklaşım Skoru": ai_score}
 
     st.success("\U0001F50D Değerlendirme tamamlandı! Sol menüden geri bildiriminizi inceleyebilirsiniz.")
+
+
+record = {
+    "case_id": case["id"],
+    "complaint": case["complaint"],
+    "user_diagnosis": user_diagnosis,
+    "correct_diagnosis": case["diagnosis"],
+    "is_correct": is_correct,
+    "score": st.session_state.score
+}
+
+if "completed_cases" not in st.session_state:
+    st.session_state.completed_cases = []
+
+st.session_state.completed_cases.append(record)
