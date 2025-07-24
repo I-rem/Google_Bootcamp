@@ -33,7 +33,6 @@ cases = [
     },
 ]
 
-# Show case buttons
 st.markdown("Lütfen bir vaka seçin:")
 
 for case in cases:
@@ -43,7 +42,6 @@ for case in cases:
         st.session_state.ordered_tests = []  # reset labs
         st.success(f"Vaka {case['id']} seçildi!")
 
-# Show selected case info
 if "selected_case" in st.session_state:
     st.markdown("### Seçilen Vaka Bilgileri:")
     case = st.session_state.selected_case
