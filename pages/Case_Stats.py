@@ -1,26 +1,51 @@
 import streamlit as st
+from supabase_client import fetch_all_results
 from ui_helpers import render_sidebar, render_header
 
 render_sidebar()
 render_header("Vaka İstatistikleri", icon="📊")
 
-if "completed_cases" not in st.session_state or len(st.session_state.completed_cases) == 0:
-    st.info("Henüz tamamladığınız bir vaka yok.")
+# Veritabanından verileri çek
+try:
+    results = fetch_all_results()
+except Exception as e:
+    st.error(f"❌ Supabase bağlantı hatası: {e}")
     st.stop()
 
-total = len(st.session_state.completed_cases)
-correct = sum(1 for c in st.session_state.completed_cases if c["is_correct"])
-avg_score = sum(c["score"] for c in st.session_state.completed_cases) / total
+# Handle empty state
+if not results:
+    st.info("Henüz kayıtlı vaka çözümünüz yok.")
+    st.stop()
 
-st.markdown(f"**✅ Doğru Tanılar:** {correct} / {total}")
-st.markdown(f"**📈 Ortalama Skor:** {round(avg_score)} / 100")
+# Özet istatistikler
+total_cases = len(results)
+correct_cases = sum(1 for row in results if row["is_correct"])
+avg_score = sum(row["score"] for row in results) / total_cases
+
+# Metrics
+st.markdown("### 📊 Genel Performans")
+col1, col2 = st.columns(2)
+col1.metric("✅ Doğru Tanı Sayısı", f"{correct_cases} / {total_cases}")
+col2.metric("📈 Ortalama Skor", f"{round(avg_score)} / 100")
 st.divider()
 
-for i, case in enumerate(st.session_state.completed_cases[::-1]):
-    st.markdown(f"### 🧾 Vaka {case['case_id']}")
-    st.markdown(f"- **Şikayet:** {case['complaint']}")
-    st.markdown(f"- **Tanınız:** {case['user_diagnosis']}")
-    st.markdown(f"- **Doğru Tanı:** {case['correct_diagnosis']}")
-    st.markdown(f"- **Durum:** {'✅ Doğru' if case['is_correct'] else '❌ Yanlış'}")
-    st.markdown(f"- **Skor:** {case['score']} / 100")
+# Detailed case records
+st.markdown("### 🧾 Geçmiş Vaka Kayıtları")
+
+for row in results:
+    st.markdown(f"""
+    #### 🧪 Vaka {row['case_id']}
+    - 🩺 **Şikayet:** {row['complaint']}
+    - 📝 **Tanınız:** `{row['user_diagnosis']}`
+    - ✅  **Doğru Tanı:** `{row['correct_diagnosis']}`
+    - 🎯 **Sonuç:** {"✅ Doğru" if row['is_correct'] else "❌ Yanlış"}
+    - 🏆 **Skor:** {row['score']} / 100
+    - ⏱️ **Tarih:** {row['timestamp']}
+    """)
     st.markdown("---")
+    
+st.markdown(f"### 📌 Özet")
+col1, col2 = st.columns(2)
+col1.metric("✅ Doğru Tanı Sayısı", f"{correct} / {total}")
+col2.metric("📈 Ortalama Skor", f"{round(avg_score)} / 100")
+st.divider()

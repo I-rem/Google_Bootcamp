@@ -1,3 +1,6 @@
+from db import init_db
+init_db()
+
 import streamlit as st
 
 st.set_page_config(page_title="Beni Teşhis Et", layout="wide", page_icon="🩺")

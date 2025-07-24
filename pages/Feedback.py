@@ -3,9 +3,10 @@ from gemini_utils import get_patient_response
 
 st.title("\U0001F9E0 Geri Bildirim")
 
-if "selected_case" not in st.session_state or "submitted_diagnosis" not in st.session_state:
-    st.warning("Lütfen önce tanınızı gönderin.")
+if "selected_case" not in st.session_state or not st.session_state.get("submitted_diagnosis"):
+    st.warning("Lütfen önce bir vaka seçin ve tanınızı gönderin.")
     st.stop()
+
 
 case = st.session_state.selected_case
 

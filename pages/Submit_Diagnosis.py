@@ -1,3 +1,4 @@
+from supabase_client import insert_case_result
 import streamlit as st
 from gemini_utils import (
     get_ai_feedback,
@@ -46,19 +47,28 @@ if submitted:
         st.session_state.score = ai_score
         st.session_state.score_breakdown = {"AI Klinik Yaklaşım Skoru": ai_score}
 
-    st.success("\U0001F50D Değerlendirme tamamlandı! Sol menüden geri bildiriminizi inceleyebilirsiniz.")
-
-
-record = {
+    insert_case_result({
     "case_id": case["id"],
     "complaint": case["complaint"],
     "user_diagnosis": user_diagnosis,
     "correct_diagnosis": case["diagnosis"],
     "is_correct": is_correct,
     "score": st.session_state.score
-}
+})
 
-if "completed_cases" not in st.session_state:
-    st.session_state.completed_cases = []
+    st.success("\U0001F50D Değerlendirme tamamlandı! Sol menüden geri bildiriminizi inceleyebilirsiniz.")
 
-st.session_state.completed_cases.append(record)
+
+#record = {
+#    "case_id": case["id"],
+#    "complaint": case["complaint"],
+#    "user_diagnosis": user_diagnosis,
+#    "correct_diagnosis": case["diagnosis"],
+#    "is_correct": is_correct,
+ #   "score": st.session_state.score
+#}
+
+#if "completed_cases" not in st.session_state:
+#    st.session_state.completed_cases = []
+
+#st.session_state.completed_cases.append(record)
