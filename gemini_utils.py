@@ -28,7 +28,7 @@ Sen bir hasta simülasyonusun. Doktor sana sorular soracak ve yalnızca aşağı
 
 Doktor: \"{question}\"
 
-Lütfen sadece hasta perspektifinden, kısa, açık ve doğal bir cevap ver.
+Sadece hasta perspektifinden, kısa, açık ve doğal bir cevap ver.
 """
 
     fast_model = "gemini-2.0-flash"
@@ -36,7 +36,6 @@ Lütfen sadece hasta perspektifinden, kısa, açık ve doğal bir cevap ver.
 
     response = _generate_response(fast_model, prompt)
 
-    # Fallback if error or quota
     if response.startswith("__ERROR__"):
         if "quota" in response.lower() or "limit" in response.lower():
             st.warning("⚠️ Hızlı modelde kota aşıldı. Yavaş modele geçiliyor...")
@@ -56,7 +55,7 @@ Sen bir klinik eğitmen olarak, aşağıdaki iki tanının aynı hastalığı ta
 - Öğrencinin yazdığı tanı: \"{user_diagnosis}\"
 - Doğru tanı: \"{correct_diagnosis}\"
 
-Bu iki tanı **klinik olarak eşdeğer** mi?
+Bu iki tanı **klinik olarak eşdeğer** mi? Ufak tefek yazım hataları olabilir. Eş anlamlı kelimeler kullanabilir.
 
 Yalnızca \"EVET\" ya da \"HAYIR\" yaz. Açıklama yapma.
 """
@@ -83,7 +82,7 @@ Sen bir klinik eğitmensin. Aşağıdaki hasta vakası ve öğrencinin hastaya s
 ### Öğrencinin soruları:
 {chr(10).join(f"- {q}" for q in questions)}
 
-Lütfen öğrencinin yaklaşımını **100 üzerinden** puanla. Sadece sayı döndür.
+Öğrencinin yaklaşımını **100 üzerinden** puanla. Sadece sayı döndür.
 """
         response = model.generate_content(prompt)
         score_str = response.text.strip()
@@ -92,34 +91,35 @@ Lütfen öğrencinin yaklaşımını **100 üzerinden** puanla. Sadece sayı dö
     except:
         return None
     
-def get_ai_feedback(case, chat_history):
+def get_ai_feedback(case, chat_history, ordered_tests):
     try:
         model = genai.GenerativeModel("gemini-2.0-flash")
 
         questions = [q for sender, q in chat_history if sender == "Siz"]
         prompt = f"""
-Sen bir klinik eğitim asistanısın. Aşağıdaki hasta vakası ve öğrenci tarafından hastaya sorulan sorular temelinde, öğrenciye geri bildirim ver:
+Sen bir klinik eğitim asistanısın. Aşağıdaki öğrenci yaklaşımını değerlendir:
 
-- Vakayı anlama becerisi
-- Sorduğu soruların tıbbi kalitesi
-- Eksik kalan kritik noktalar
-- Hastayla iletişim ve empati düzeyi
+- Hangi testleri istedi?
+- Hangi önemli testleri istemedi?
+- Tanıya ulaşma süreci ne kadar başarılıydı?
+- Empati ve iletişim nasıldı?
 
 ### Vaka Bilgisi:
-- Yaş: {case['age']}
-- Cinsiyet: {case['gender']}
+- Yaş: {case['age']}, Cinsiyet: {case['gender']}
 - Şikayet: {case['complaint']}
 - Öykü: {case['history']}
-- Belirtiler: {', '.join(case['symptoms'])}
+- Semptomlar: {', '.join(case['symptoms'])}
 
-### Öğrencinin Hastaya Sorduğu Sorular:
+### Öğrenci Soruları:
 {chr(10).join(f"- {q}" for q in questions)}
 
-Lütfen açık, yapıcı ve eğitici bir geri bildirim yaz. Puan verme veya sonuç yok, sadece detaylı geri bildirim ver.
+### Öğrencinin İstediği Tetkikler:
+{chr(10).join(f"- {test}" for test in ordered_tests) if ordered_tests else "Hiç test istemedi."}
+
+Yalnızca kısa ve açık 3-4 maddelik geri bildirim yaz.
 """
 
         response = model.generate_content(prompt)
         return response.text.strip() if response.text else "🛑 Geri bildirim alınamadı."
-
     except Exception as e:
         return f"❗ AI Geri Bildirim Hatası: {e}"

@@ -35,7 +35,12 @@ if submitted:
         st.info(f"✅ Beklenen Tanı: **{case['diagnosis']}**")
 
     with st.spinner("\U0001F9E0 Yapay zeka geri bildirimi ve skor hesaplanıyor..."):
-        st.session_state.ai_feedback = get_ai_feedback(case, st.session_state.chat_history)
+        st.session_state.ai_feedback = get_ai_feedback(
+    case,
+    st.session_state.chat_history,
+    st.session_state.ordered_tests
+)
+
 
         ai_score = get_clinical_score_ai(case, st.session_state.chat_history)
         st.session_state.score = ai_score
