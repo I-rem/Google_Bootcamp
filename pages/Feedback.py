@@ -33,9 +33,12 @@ st.markdown("Bu belirtiler, bu tanıyı desteklemektedir.")
 st.markdown("---")
 st.markdown("### \U0001F3C6 Klinik Yaklaşım Skorunuz")
 
-if "score" in st.session_state:
-    st.metric(label="AI Skor", value=f"{st.session_state.score} / 100")
-    for key, val in st.session_state.score_breakdown.items():
+score = st.session_state.get("score")
+breakdown = st.session_state.get("score_breakdown")
+
+if score and breakdown:
+    st.metric(label="AI Skor", value=f"{score} / 100")
+    for key, val in breakdown.items():
         st.markdown(f"- **{key}**: {val} puan")
 else:
     st.info("Skor hesaplanmamış. Lütfen önce tanınızı gönderin.")
