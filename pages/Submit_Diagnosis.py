@@ -6,15 +6,18 @@ if "selected_case" not in st.session_state:
     st.warning("Lütfen önce bir vaka seçin.")
     st.stop()
 
-correct_diagnosis = "Appendisit"  # Dummy
+# Seçilen vakanın doğru tanısını dinamik olarak al
+case = st.session_state.selected_case
+correct_diagnosis = case.get("diagnosis", "Tanı belirtilmemiş") # Eğer tanı yoksa varsayılan bir değer ata
 
 with st.form("diagnosis_form"):
     diagnosis = st.text_input("Tanınızı yazınız:")
     submitted = st.form_submit_button("Gönder")
 
-if submitted: # Should probably get gemini involved here too
+if submitted:
     st.session_state.submitted_diagnosis = diagnosis
-    if diagnosis.lower().strip() == correct_diagnosis.lower():
-        st.success("Doğru tanı!")
+    # Kullanıcının girdiği tanıyı, seçilen vakanın doğru tanısı ile karşılaştır
+    if diagnosis.lower().strip() == correct_diagnosis.lower().strip():
+        st.success("Doğru tanı! Tebrikler.")
     else:
-        st.error("Yanlış tanı. Doğru cevap: " + correct_diagnosis)
+        st.error(f"Yanlış tanı. Doğru cevap: **{correct_diagnosis}**")
