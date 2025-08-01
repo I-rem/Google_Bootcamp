@@ -1,4 +1,4 @@
-cases_by_department =  "Genel Cerrahi": [
+cases_by_department =  {"Genel Cerrahi": [
         {
             "id": 1,
             "age": 25,
@@ -764,4 +764,4 @@ cases_by_department =  "Genel Cerrahi": [
             },
             "diagnosis": "Fonksiyonel Kabızlık",
         },
-    ]
+    ]}
