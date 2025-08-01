@@ -764,4 +764,4 @@ cases_by_department =  "Genel Cerrahi": [
             },
             "diagnosis": "Fonksiyonel Kabızlık",
         },
-    ],
+    ]
