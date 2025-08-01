@@ -33,3 +33,4 @@ ENV/
 
 # Compiled C extensions
 *.so
+users.json 

@@ -1,4 +1,10 @@
 import streamlit as st
+if "username" not in st.session_state:
+    st.warning("Lütfen önce giriş yapın.")
+    st.stop()
+
+username = st.session_state["username"]
+
 
 st.title("🧪 Laboratuvar Sonuçları")
 
