@@ -106,5 +106,21 @@ Weekly özetlerinin daha aktif kullanılmasına karar verildi.
 - **Daily Scrum:**
 
 ### Sprint Board
+### Ürün Durumu: Ekran Görüntüleri
+<img width="935" height="780" alt="image" src="https://github.com/user-attachments/assets/478806f6-01c3-446f-bbb2-b82f4292d29f" />
+<img width="740" height="797" alt="image" src="https://github.com/user-attachments/assets/753eb8bb-724a-4499-aa28-a95d34e43538" />
+<img width="751" height="295" alt="image" src="https://github.com/user-attachments/assets/edc22988-1045-4103-8575-54c6b7e08145" />
+<img width="760" height="308" alt="image" src="https://github.com/user-attachments/assets/4c13bd6c-97af-4e1e-aa43-32d169010183" />
+
 ### Sprint Review
+
+Tanı verildikten sonra yapay zeka, geri bildirim ve puanlama yapabiliyor. 
+
+Klinik sorgulama kalitesi, tanının doğruluğu ve alınan testler de analiz ediliyor. 
+
+Supabase ile veriler kalıcı olarak kaydedilmeye başlandı. 
+
+Sesli okuma ve sesli giriş sayesinde etkileşim doğallaştırıldı. 
+
+Giriş yapmayan kullanıcılar engelleniyor; kullanıcı oturumu destekleniyor.
 ### Sprint Retrospective
