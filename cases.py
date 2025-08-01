@@ -1,4 +1,4 @@
-cases = [
+cases_by_department = [
     {
         "id": 1,
         "age": 25,
