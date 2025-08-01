@@ -4,18 +4,30 @@ from user_auth import (
     verify_security_answer, reset_password
 )
 from db import init_db
-
 init_db()
 
 st.set_page_config(page_title="Beni Teşhis Et", layout="wide", page_icon="🩺")
 
-# Oturum durumu için session_state başlangıç
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "username" not in st.session_state:
     st.session_state.username = ""
+if "redirected" not in st.session_state:
+    st.session_state.redirected = False
 
-menu = st.sidebar.selectbox("Menü", ["Giriş Yap", "Kayıt Ol", "Şifre Sıfırla"])
+Sidebar user info
+if st.session_state.logged_in:
+    st.sidebar.markdown(f"👤 Giriş yapan: **{st.session_state.username}**")
+
+if st.session_state.logged_in:
+    menu = st.sidebar.selectbox("Menü", ["Ana Sayfa", "Çıkış"])
+else:
+    menu = st.sidebar.selectbox("Menü", ["Giriş Yap", "Kayıt Ol", "Şifre Sıfırla"])
+
+
+if st.session_state.logged_in and not st.session_state.redirected:
+    st.session_state.redirected = True
+    st.switch_page("pages/Case_Selection.py")
 
 def show_login():
     st.title("👤 Giriş Yap")
@@ -26,14 +38,17 @@ def show_login():
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success(f"Hoşgeldiniz, {username}!")
+            st.switch_page("pages/Case_Selection.py")
         else:
             st.error("Kullanıcı adı veya şifre yanlış!")
+
 
 def show_register():
     st.title("📝 Kayıt Ol")
     new_username = st.text_input("Yeni Kullanıcı Adı", key="reg_username")
     new_password = st.text_input("Şifre", type="password", key="reg_password")
-    security_answer = st.text_input("Güvenlik Sorusu: En sevdiğiniz renk nedir? (Şifre sıfırlamak için)", key="reg_sec_answer")
+    security_answer = st.text_input("Güvenlik Sorusu: En sevdiğiniz renk nedir?", key="reg_sec_answer")
+
     if st.button("Kayıt Ol"):
         if not new_username or not new_password or not security_answer:
             st.error("Lütfen tüm alanları doldurun.")
@@ -41,15 +56,20 @@ def show_register():
             st.error("Bu kullanıcı adı zaten alınmış.")
         else:
             if register(new_username, new_password, security_answer):
-                st.success("Kayıt başarılı! Şimdi giriş yapabilirsiniz.")
+                st.success("Kayıt başarılı! Giriş yapılıyor...")
+                st.session_state.logged_in = True
+                st.session_state.username = new_username
+                st.switch_page("pages/Case_Selection.py")
             else:
                 st.error("Kayıt yapılamadı, lütfen tekrar deneyin.")
+
 
 def show_reset_password():
     st.title("🔑 Şifre Sıfırlama")
     username = st.text_input("Kullanıcı Adınız", key="reset_username")
-    security_answer = st.text_input("Güvenlik Sorusu Cevabınız: En sevdiğiniz renk nedir?", key="reset_sec_answer")
+    security_answer = st.text_input("Güvenlik Sorusu Cevabınız:", key="reset_sec_answer")
     new_password = st.text_input("Yeni Şifre", type="password", key="reset_new_password")
+
     if st.button("Şifreyi Sıfırla"):
         if not username or not security_answer or not new_password:
             st.error("Lütfen tüm alanları doldurun.")
@@ -63,28 +83,24 @@ def show_reset_password():
         else:
             st.error("Güvenlik sorusu cevabı yanlış.")
 
-def show_diagnosis_page():
-    st.markdown("# 🩺 Beni Teşhis Et")
-    st.markdown(f"Hoşgeldiniz, **{st.session_state.username}**! Bu uygulama, tıp öğrencilerinin klinik vaka çözümleme becerilerini geliştirmeleri için tasarlanmıştır.")
-    st.markdown("""
-    **Sol menüden** bir vaka seçerek çözmeye başlayabilirsiniz.
-    """)
-
-    with st.container():
-        col1, col2 = st.columns([2, 1])
-        with col1:
-            st.image("https://cdn-icons-png.flaticon.com/512/3374/3374949.png", width=120)
-        with col2:
-            st.markdown("### 🚀 Hazır Özellikler")
-            st.markdown("- 📋 Vaka Seçimi\n- 🤖 AI ile Hasta Konuşması\n- 🧪 Laboratuvar Testleri\n- ✅ Tanı Gönderimi\n- 🧠 AI Geri Bildirim ve Skor")
-
+def show_landing():
+    st.title("🩺 Beni Teşhis Et")
+    st.markdown(f"Hoşgeldiniz, **{st.session_state.username}**! Klinik vaka çözümleme pratiğine başlayabilirsiniz.")
+    st.markdown("**Sol menüden** bir vaka seçerek başlayabilirsiniz.")
     if st.button("Çıkış Yap"):
         st.session_state.logged_in = False
         st.session_state.username = ""
+        st.session_state.redirected = False
+        st.rerun()
 
-# Sayfa içeriği session_state durumuna göre gösteriliyor
 if st.session_state.logged_in:
-    show_diagnosis_page()
+    if menu == "Ana Sayfa":
+        show_landing()
+    elif menu == "Çıkış":
+        st.session_state.logged_in = False
+        st.session_state.username = ""
+        st.session_state.redirected = False
+        st.rerun()
 else:
     if menu == "Giriş Yap":
         show_login()
