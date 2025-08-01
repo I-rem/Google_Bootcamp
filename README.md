@@ -101,8 +101,16 @@ Bir önceki Sprinte göre daha yakın iletişimde kaldığımız bir süreç yö
 Toplantı sıklıklarının ani bir gelişme olmadığı sürece aynı kalmasına karar verildi.
 Weekly özetlerinin daha aktif kullanılmasına karar verildi.
 ## Sprint 3
-- **Sprint Notları:**
-- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:**
+- **Sprint Notları:** Eklenen özellikelr ile birlikte çok daha bütüncül hissetiriyor. Geribildirim ve tanı kontrol fonksiyonlarında ince ayarlar gerekli. Kota ve hızla ilgili sorunlar süreci yavaşlattı. Branchleri merge etmeden önce çok beklememiz conflictlerle daha fazla uğraşmamıza sebep oldu.
+  
+- **Sprint İçinde Tamamlanması Tahmin Edilen Puan:** 29 story points
+- **Puan Tamamlama Mantığı:**
+  -  AI geri bildirimi     5
+  - Klinik skor            5
+  - Sesli yanıt            3
+  - Login sistemi          8
+  - Veri tabanı taşıma     3 
+  - Vaka sınıflandırması   3
 - **Daily Scrum:**
 
 ### Sprint Board
@@ -124,3 +132,12 @@ Sesli okuma ve sesli giriş sayesinde etkileşim doğallaştırıldı.
 
 Giriş yapmayan kullanıcılar engelleniyor; kullanıcı oturumu destekleniyor.
 ### Sprint Retrospective
+Yapay zekanın geri bildirim kalitesi beklentilerin üstünde.
+
+Supabase kayıt sistemi çok zorlamadı.
+
+Sesli girdi için doğal hissettiren bir çözüm bulmakta zorlandık.
+
+Vaka çeşidi memnun edici.
+
+Yeni fonksiyonlar üzerinde çok zaman harcadığımız için kullanıcı deneyimine yeterince odaklanamadık.
