@@ -15,7 +15,7 @@ if "username" not in st.session_state:
 if "redirected" not in st.session_state:
     st.session_state.redirected = False
 
-Sidebar user info
+
 if st.session_state.logged_in:
     st.sidebar.markdown(f"👤 Giriş yapan: **{st.session_state.username}**")
 
