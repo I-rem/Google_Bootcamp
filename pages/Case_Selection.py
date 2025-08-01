@@ -1,9 +1,11 @@
 import streamlit as st
+import os
+import unicodedata # Türkçe karakterleri dönüştürmek için
+import re # Regex işlemleri için
 
 st.title("📋 Vaka Seçimi")
 
-# Vakaları bölümlere göre gruplandırılmış olarak tanımla
-# Her bölümün altında kendi vakaları listelenecek
+# Vakaları bölümlere göre gruplandırılmış olarak tanımla 
 cases_by_department = {
     "Genel Cerrahi": [
         {
@@ -388,7 +390,7 @@ cases_by_department = {
             "history": "Hasta son 3 aydır özellikle geceleri artan sağ el bileğinde ağrı, ilk üç parmakta uyuşma ve karıncalanma şikayetleriyle başvurmuş. Daktilo kullanıyor.",
             "symptoms": ["güçsüzlük", "cisimleri düşürme"],
             "lab_results": {
-                "EMG/NCS": "Karpal tünelde median sinir sıkışması",
+                "EMG/NCS": "Karpal Tünel Sendromu",
             },
             "diagnosis": "Karpal Tünel Sendromu",
         },
@@ -583,7 +585,7 @@ cases_by_department = {
             "age": 25,
             "gender": "Erkek",
             "complaint": "Boğaz ağrısı ve yutma güçlüğü",
-            "history": "Hasta son 3 gündür şiddetli boğaz ağrısı, yutma güçlüğü, ateş ve boyunda şişlik şikayetleriyle başvurmuş.",
+            "history": "Hasta son 3 gündür şiddetli boğaz ağrısı, yutma güçlüğü, ateş ve boyununda şişlik şikayetleriyle başvurmuş.",
             "symptoms": ["halsizlik", "bademciklerde beyazlık"],
             "lab_results": {
                 "Boğaz Kültürü": "Streptococcus pyogenes",
@@ -735,138 +737,140 @@ cases_by_department = {
         },
         {
             "id": 1103,
-            "age": 9,
-            "gender": "Erkek",
-            "complaint": "Karın ağrısı ve ishal",
-            "history": "Çocuğun son 1 gündür ani başlayan karın ağrısı, ishal ve kusma şikayetleriyle başvurulmuş. Okul kantininden yemek yemiş.",
-            "symptoms": ["ateş", "halsizlik"],
+            "age": 1,
+            "gender": "Kız",
+            "complaint": "İshal ve kusma",
+            "history": "Çocuğun son 1 gündür başlayan sık sulu ishal ve kusma şikayetleriyle başvurulmuş. Ateşi yok, ancak huzursuz ve iştahsız.",
+            "symptoms": ["dehidrasyon belirtileri (ağız kuruluğu, gözlerde çökme)", "halsizlik"],
             "lab_results": {
-                "Gaita Kültürü": "Salmonella üremesi",
+                "Gaita Mikroskopisi": "Lökosit yok",
+                "Gaita Kültürü": "Negatif",
             },
-            "diagnosis": "Gastroenterit (Salmonella)",
+            "diagnosis": "Akut Gastroenterit (Viral)",
         },
         {
             "id": 1104,
             "age": 4,
-            "gender": "Kız",
-            "complaint": "Sık öksürük ve hırıltı",
-            "history": "Çocuğun son 1 haftadır özellikle geceleri artan sık öksürük ve nefes alıp verirken hırıltı şikayetleriyle başvurulmuş. Ailede astım öyküsü var.",
-            "symptoms": ["nefes darlığı", "göğüste sıkışma"],
+            "gender": "Erkek",
+            "complaint": "Nefes darlığı ve hırıltılı solunum",
+            "history": "Çocuğun özellikle geceleri artan nefes darlığı, hırıltılı solunum ve öksürük şikayetleriyle başvurulmuş. Ailede astım öyküsü var.",
+            "symptoms": ["göğüste sıkışma", "uyku bozukluğu"],
             "lab_results": {
                 "Akciğer Grafisi": "Normal",
+                "Solunum Fonksiyon Testleri": "Bronkodilatör sonrası düzelen obstrüksiyon",
             },
-            "diagnosis": "Astım Atağı",
+            "diagnosis": "Bronşiyal Astım",
         },
         {
             "id": 1105,
-            "age": 1,
-            "gender": "Erkek",
-            "complaint": "Gelişim geriliği",
-            "history": "Çocuğun yaşıtlarına göre motor ve bilişsel gelişiminde gerilik olduğu fark edilmiş. Oturma, emekleme ve konuşma becerileri gecikmiş.",
-            "symptoms": ["kas hipotonisi", "beslenme güçlüğü"],
+            "age": 9,
+            "gender": "Kız",
+            "complaint": "Karın ağrısı ve kabızlık",
+            "history": "Çocuğun uzun süredir devam eden karın ağrısı ve haftada 2-3 kereden az dışkılama şikayetleriyle başvurulmuş. İştahsızlık ve kilo alamama da var.",
+            "symptoms": ["şişkinlik", "dışkılama sırasında zorlanma"],
             "lab_results": {
-                "Genetik Testler": "Down Sendromu ile uyumlu",
+                "Batın Röntgeni": "Kolonda gaita birikimi",
             },
-            "diagnosis": "Down Sendromu",
+            "diagnosis": "Fonksiyonel Kabızlık",
         },
     ],
-    "Acil Tıp": [
-        {
-            "id": 1201,
-            "age": 40,
-            "gender": "Erkek",
-            "complaint": "Trafik kazası sonrası çoklu travma",
-            "history": "Trafik kazası sonrası bilinci açık ancak genel durumu kötü olan hasta acil servise getirilmiş. Vücudunda yaygın ağrıları var.",
-            "symptoms": ["nefes darlığı", "kanama"],
-            "lab_results": {
-                "Tam Kan Sayımı": "Hb: 9.0 (↓)",
-                "Batın USG (FAST)": "Peritoneal sıvı",
-                "Toraks BT": "Pnömotoraks",
-            },
-            "diagnosis": "Çoklu Travma (Dalak Rüptürü, Pnömotoraks)",
-        },
-        {
-            "id": 1202,
-            "age": 22,
-            "gender": "Kadın",
-            "complaint": "İlaç zehirlenmesi",
-            "history": "Hasta bilinç bulanıklığı ve bulantı şikayetleriyle acile getirilmiş. Yakınları yüksek dozda ilaç aldığını belirtiyor.",
-            "symptoms": ["solunum depresyonu", "pupil boyutunda değişiklik"],
-            "lab_results": {
-                "Kan İlaç Düzeyi": "Yüksek parasetamol düzeyi",
-                "Karaciğer Fonksiyon Testleri": "ALT, AST (↑)",
-            },
-            "diagnosis": "Akut Parasetamol Zehirlenmesi",
-        },
-        {
-            "id": 1203,
-            "age": 60,
-            "gender": "Erkek",
-            "complaint": "Ani başlayan şiddetli baş ağrısı",
-            "history": "Hasta hayatında yaşadığı en şiddetli baş ağrısı şikayetiyle acile başvurmuş. Bulantı ve ense sertliği de var.",
-            "symptoms": ["ışık hassasiyeti", "bilinç bulanıklığı"],
-            "lab_results": {
-                "Beyin BT": "Subaraknoid kanama",
-                "LP (Lomber Ponksiyon)": "Ksantokromik BOS",
-            },
-            "diagnosis": "Subaraknoid Kanama",
-        },
-        {
-            "id": 1204,
-            "age": 30,
-            "gender": "Kadın",
-            "complaint": "Arı sokması sonrası alerjik reaksiyon",
-            "history": "Hasta arı sokması sonrası ani başlayan vücutta yaygın kızarıklık, kaşıntı, nefes darlığı ve tansiyon düşüklüğü şikayetleriyle acile başvurmuş.",
-            "symptoms": ["yüzde şişlik", "boğazda sıkışma"],
-            "lab_results": {
-                "Kan Gazı": "Hipoksemi",
-                "Triptaz Düzeyi": "Yüksek",
-            },
-            "diagnosis": "Anafilaktik Şok",
-        },
-        {
-            "id": 1205,
-            "age": 50,
-            "gender": "Erkek",
-            "complaint": "Göğüs ağrısı ve nefes darlığı",
-            "history": "Hasta ani başlayan, derin nefes almakla artan göğüs ağrısı ve nefes darlığı şikayetiyle acile başvurmuş. Uzun uçak yolculuğu öyküsü var.",
-            "symptoms": ["öksürük", "çarpıntı"],
-            "lab_results": {
-                "Akciğer BT Anjiyografi": "Pulmoner emboli",
-                "D-Dimer": "Yüksek",
-            },
-            "diagnosis": "Pulmoner Emboli",
-        },
-    ]
 }
+# (cases_by_department sözlüğü yukarıdaki gibi devam ediyor)
+# ...
 
-# Bölüm seçimi
-st.markdown("Lütfen bir bölüm seçin:")
-department_names = list(cases_by_department.keys())
-selected_department_name = st.selectbox("Bölüm Seçiniz", department_names, key="department_select")
+# Fonksiyon: Bölüm adını dosya adı formatına çevirme
+def slugify_department_name(department_name):
+    # Parantez içindeki ifadeleri kaldır
+    department_name = re.sub(r'\s*\(.*\)', '', department_name).strip()
+    
+    # Unicode karakterleri ASCII'ye çevir (örn: ç -> c, ö -> o)
+    normalized_name = unicodedata.normalize('NFKD', department_name).encode('ascii', 'ignore').decode('utf-8')
+    
+    # Tüm harfleri küçük yap ve boşlukları alt çizgi ile değiştir
+    slug = normalized_name.lower().replace(' ', '_')
+    
+    # Geçersiz karakterleri kaldır (sadece a-z, 0-9, _ kalır)
+    slug = re.sub(r'[^a-z0-9_]', '', slug)
+    
+    return slug
 
-# Seçilen bölümdeki vakaları göster
-if selected_department_name:
-    st.session_state.selected_department = selected_department_name
-    st.markdown(f"### {selected_department_name} Bölümü Vakaları:")
+st.markdown("### Bir Bölüm Seçin:")
 
-    cases_in_selected_department = cases_by_department[selected_department_name]
+# Her bölüm için resimli bir buton/kart oluşturma
+num_cols = 4 # Her satırda kaç sütun olacağını belirle
+cols = st.columns(num_cols)
 
-    if cases_in_selected_department:
-        for case in cases_in_selected_department:
-            if st.button(f"Vaka {case['id']}: {case['age']} yaşında {case['gender']} - {case['complaint']}"):
-                st.session_state.selected_case = case
-                st.session_state.chat_history = []  # Sohbeti sıfırla
-                st.session_state.ordered_tests = []  # Laboratuvar testlerini sıfırla
-                st.success(f"Vaka {case['id']} seçildi: {case['complaint']}")
-    else:
-        st.info(f"{selected_department_name} bölümünde henüz vaka bulunmamaktadır.")
+# Session state'te seçili bölümü sakla
+if "selected_department_card" not in st.session_state:
+    st.session_state.selected_department_card = None
 
-# Seçilen vaka bilgilerini göster
-if "selected_case" in st.session_state and st.session_state.selected_case:
-    st.markdown("### Seçilen Vaka Bilgileri:")
-    case = st.session_state.selected_case
-    st.write(f"**Şikayet:** {case['complaint']}")
-    st.write(f"**Öykü:** {case['history']}")
-else:
-    st.info("Lütfen yukarıdan bir vaka seçin.")
+# Resimlerin bulunduğu klasör
+ASSETS_DIR = "assets" 
+# Resim uzantısı (tercihinize göre 'png' veya 'jpg' yapabilirsiniz)
+IMAGE_EXTENSION = "png" 
+
+for i, department_name in enumerate(cases_by_department.keys()):
+    with cols[i % num_cols]: # Her bölümü kendi sütununa yerleştir
+        # Bölüm adını dosya adı formatına çevir
+        image_filename = f"{slugify_department_name(department_name)}.{IMAGE_EXTENSION}"
+        image_path = os.path.join(ASSETS_DIR, image_filename)
+
+        if os.path.exists(image_path): # Resim varsa ve yolu doğruysa
+            st.image(image_path, caption=department_name, width=100)
+        else:
+            st.warning(f"Resim bulunamadı: '{image_filename}'. Varsayılan metin gösteriliyor.")
+            st.write(department_name) # Resim yoksa sadece adı göster
+
+        if st.button(f"Vakaları Gör", key=f"select_dept_{department_name}"):
+            st.session_state.selected_department_card = department_name
+            st.rerun() # Seçim yapıldığında sayfayı yeniden yükle
+
+# Eğer bir bölüm seçilmişse, o bölümün vakalarını göster
+if st.session_state.selected_department_card:
+    selected_department_name = st.session_state.selected_department_card
+    st.subheader(f"{selected_department_name} Bölümü Vakaları:")
+
+    cases_in_department = cases_by_department[selected_department_name]
+    
+    # Create a list of case complaints to display in the selectbox
+    case_complaints = [case["complaint"] for case in cases_in_department]
+    
+    # Select box for individual case
+    # Varsayılan değeri, eğer daha önce bir vaka seçiliyse, o vaka olarak ayarla
+    # Veya varsayılan olarak ilk vakayı seç
+    default_case_index = 0
+    if "selected_case" in st.session_state and st.session_state.selected_case in cases_in_department:
+        # Eğer önceden seçili vaka varsa, onun index'ini bul
+        try:
+            default_case_index = case_complaints.index(st.session_state.selected_case["complaint"])
+        except ValueError:
+            default_case_index = 0 # Bulamazsa varsayılan
+    
+    selected_complaint = st.selectbox(
+        "Bir vaka seçin:", 
+        case_complaints, 
+        index=default_case_index # Varsayılan seçimi ayarla
+    )
+
+    if selected_complaint:
+        # Find the selected case
+        selected_case = next(case for case in cases_in_department if case["complaint"] == selected_complaint)
+        
+        # Seçilen vakayı session state'e kaydet
+        st.session_state.selected_case = selected_case
+
+        # ---
+        ## Vaka Detayları
+        
+        st.subheader(f"Vaka : {selected_case['id']} - {selected_case['complaint']}")
+
+        # Using columns for better layout
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown(f"**Yaş:** {selected_case['age']}")
+            st.markdown(f"**Cinsiyet:** {selected_case['gender']}")
+            st.markdown(f"**Şikayet:** {selected_case['complaint']}")
+            st.markdown(f"**Öykü:** {selected_case['history']}")
+
+       
