@@ -3,8 +3,11 @@ from user_auth import (
     authenticate, register, user_exists,
     verify_security_answer, reset_password
 )
+from db import init_db
 
-st.set_page_config(page_title="Beni Teşhis Et - Giriş", layout="wide")
+init_db()
+
+st.set_page_config(page_title="Beni Teşhis Et", layout="wide", page_icon="🩺")
 
 # Oturum durumu için session_state başlangıç
 if "logged_in" not in st.session_state:
@@ -61,11 +64,20 @@ def show_reset_password():
             st.error("Güvenlik sorusu cevabı yanlış.")
 
 def show_diagnosis_page():
-    st.title("🩺 Beni Teşhis Et")
+    st.markdown("# 🩺 Beni Teşhis Et")
     st.markdown(f"Hoşgeldiniz, **{st.session_state.username}**! Bu uygulama, tıp öğrencilerinin klinik vaka çözümleme becerilerini geliştirmeleri için tasarlanmıştır.")
     st.markdown("""
     **Sol menüden** bir vaka seçerek çözmeye başlayabilirsiniz.
     """)
+
+    with st.container():
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.image("https://cdn-icons-png.flaticon.com/512/3374/3374949.png", width=120)
+        with col2:
+            st.markdown("### 🚀 Hazır Özellikler")
+            st.markdown("- 📋 Vaka Seçimi\n- 🤖 AI ile Hasta Konuşması\n- 🧪 Laboratuvar Testleri\n- ✅ Tanı Gönderimi\n- 🧠 AI Geri Bildirim ve Skor")
+
     if st.button("Çıkış Yap"):
         st.session_state.logged_in = False
         st.session_state.username = ""
