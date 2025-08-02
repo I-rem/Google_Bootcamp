@@ -112,6 +112,9 @@ Weekly özetlerinin daha aktif kullanılmasına karar verildi.
   - Veri tabanı taşıma     3 
   - Vaka sınıflandırması   3
 - **Daily Scrum:**
+<img width="617" height="273" alt="image" src="https://github.com/user-attachments/assets/cd7a29d6-73f7-4149-8312-d5a451baa833" />
+<img width="503" height="122" alt="image" src="https://github.com/user-attachments/assets/124f3a3d-90f6-4346-a099-d7ff49971b49" />
+<img width="611" height="367" alt="image" src="https://github.com/user-attachments/assets/4d8bcd57-86e1-4c19-af7a-74478cd56088" />
 
 ### Sprint Board
 <img width="1129" height="641" alt="image" src="https://github.com/user-attachments/assets/84edd2cf-0e35-4753-82bf-2309619547af" />
