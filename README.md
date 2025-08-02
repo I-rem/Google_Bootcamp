@@ -114,6 +114,8 @@ Weekly özetlerinin daha aktif kullanılmasına karar verildi.
 - **Daily Scrum:**
 
 ### Sprint Board
+<img width="1129" height="641" alt="image" src="https://github.com/user-attachments/assets/84edd2cf-0e35-4753-82bf-2309619547af" />
+
 ### Ürün Durumu: Ekran Görüntüleri
 <img width="935" height="780" alt="image" src="https://github.com/user-attachments/assets/478806f6-01c3-446f-bbb2-b82f4292d29f" />
 <img width="740" height="797" alt="image" src="https://github.com/user-attachments/assets/753eb8bb-724a-4499-aa28-a95d34e43538" />
