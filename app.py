@@ -77,7 +77,7 @@ def show_register():
                 st.success("Kayıt başarılı! Giriş yapılıyor...")
                 st.session_state.logged_in = True
                 st.session_state.username = new_username
-                st.switch_page("pages/Case_Selection.py")
+                st.switch_page("pages/Vaka_Seçimi.py")
             else:
                 st.error("Kayıt yapılamadı, lütfen tekrar deneyin.")
 

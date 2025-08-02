@@ -9,16 +9,14 @@ if not st.session_state.get("logged_in", False):
     st.stop()
 
 username = st.session_state["username"]
-st.title(" Hasta ile Konuş")
+st.title("🗣️ Hasta ile Konuş")
 
-# Lottie animasyonunu yükleme
+# Lottie animasyonu
 def load_lottie_animation(path: str):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 lottie_chatbot = load_lottie_animation("animations/chatbot.json")
-
-# Animasyonu göster
 st_lottie(lottie_chatbot, speed=1, height=200, key="chatbot")
 
 # Vaka kontrolü
@@ -32,6 +30,10 @@ case = st.session_state.selected_case
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+# Girdi alanı
+if "chat_input" not in st.session_state:
+    st.session_state.chat_input = ""
+
 # Sesli yanıt
 def speak_text(text):
     js_code = f"""
@@ -42,37 +44,32 @@ def speak_text(text):
     """
     st.components.v1.html(js_code, height=0, width=0)
 
+# Yanıt işleme fonksiyonu
+def handle_submission():
+    user_input = st.session_state.chat_input.strip()
+    if not user_input:
+        return
+
+    st.session_state.chat_history.append(("Siz", user_input))
+    try:
+        response = get_patient_response(case, user_input)
+        if not response or "Hata" in response:
+            st.session_state.chat_history.append(("Hasta", "❌ Hasta şu anda yanıt veremiyor."))
+        else:
+            st.session_state.chat_history.append(("Hasta", response))
+            speak_text(response)
+    except Exception as e:
+        st.session_state.chat_history.append(("Sistem", f"⚠️ Hata: {e}"))
+
+    # 🧹 Input temizliği (widget render'ından sonra çalışır!)
+    st.session_state.chat_input = ""
+
 # Chat formu
 with st.form("chat_form"):
-    user_input = st.text_input("Hastaya sorunuzu yazın:", key="chat_input")
-    submitted = st.form_submit_button("Gönder")
-
-if submitted and user_input:
-    with st.spinner("Yanıt bekleniyor..."):
-        try:
-            st.session_state.chat_history.append(("Siz", user_input))
-            response = get_patient_response(case, user_input)
-
-            if not response or "Hata" in response:
-                st.session_state.chat_history.append(("Hasta", "❌ Hasta şu anda yanıt veremiyor."))
-            else:
-                st.session_state.chat_history.append(("Hasta", response))
-                speak_text(response)  # Hastanın cevabını sesli okut
-        except Exception as e:
-            st.session_state.chat_history.append(("Sistem", f"⚠️ Hata: {e}"))
+    st.text_input("Hastaya sorunuzu yazın:", key="chat_input")
+    submitted = st.form_submit_button("Gönder", on_click=handle_submission)
 
 # Sohbet geçmişi
 st.markdown("### 🧾 Sohbet Geçmişi")
 for sender, message in st.session_state.chat_history:
     st.markdown(f"**{sender}:** {message}")
-
-# Gemini testi
-if st.button("Test Gemini Yanıtı"):
-    with st.spinner("Gemini deneniyor..."):
-        test = get_patient_response(case, "Ne zamandır şikayetiniz var?")
-        if test and "Hata" not in test:
-            st.success("✅ Yanıt alındı!")
-            st.write(test)
-        else:
-            st.error("❌ Yanıt alınamadı veya hata oluştu.")
-            st.write(test)
