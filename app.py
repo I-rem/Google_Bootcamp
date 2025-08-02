@@ -1,13 +1,27 @@
 import streamlit as st
+import json
+from streamlit_lottie import st_lottie
 from user_auth import (
     authenticate, register, user_exists,
     verify_security_answer, reset_password
 )
 from db import init_db
+
+# Veritabanını başlat
 init_db()
 
+# Sayfa ayarları
 st.set_page_config(page_title="Beni Teşhis Et", layout="wide", page_icon="🩺")
 
+# Lottie animasyonu yükleyici
+def load_lottie_file(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+# Animasyonu yükle
+lottie_json = load_lottie_file("animations/search users.json")
+
+# Session state ayarları
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "username" not in st.session_state:
@@ -15,22 +29,26 @@ if "username" not in st.session_state:
 if "redirected" not in st.session_state:
     st.session_state.redirected = False
 
-
+# Giriş yapan kullanıcıyı göster
 if st.session_state.logged_in:
     st.sidebar.markdown(f"👤 Giriş yapan: **{st.session_state.username}**")
 
+# Menü seçimi
 if st.session_state.logged_in:
     menu = st.sidebar.selectbox("Menü", ["Ana Sayfa", "Çıkış"])
 else:
     menu = st.sidebar.selectbox("Menü", ["Giriş Yap", "Kayıt Ol", "Şifre Sıfırla"])
 
-
+# Giriş yaptıysa sayfaya yönlendir
 if st.session_state.logged_in and not st.session_state.redirected:
     st.session_state.redirected = True
     st.switch_page("pages/Case_Selection.py")
 
+# Giriş ekranı
 def show_login():
-    st.title("👤 Giriş Yap")
+    st.title("                                                             Giriş Yap                                         ")
+    st_lottie(lottie_json, height=250)  # 🔥 Animasyonu burada gösteriyoruz
+
     username = st.text_input("Kullanıcı Adı", key="login_username")
     password = st.text_input("Şifre", type="password", key="login_password")
     if st.button("Giriş"):
@@ -42,7 +60,7 @@ def show_login():
         else:
             st.error("Kullanıcı adı veya şifre yanlış!")
 
-
+# Kayıt ekranı
 def show_register():
     st.title("📝 Kayıt Ol")
     new_username = st.text_input("Yeni Kullanıcı Adı", key="reg_username")
@@ -63,7 +81,7 @@ def show_register():
             else:
                 st.error("Kayıt yapılamadı, lütfen tekrar deneyin.")
 
-
+# Şifre sıfırlama ekranı
 def show_reset_password():
     st.title("🔑 Şifre Sıfırlama")
     username = st.text_input("Kullanıcı Adınız", key="reset_username")
@@ -83,6 +101,7 @@ def show_reset_password():
         else:
             st.error("Güvenlik sorusu cevabı yanlış.")
 
+# Ana sayfa
 def show_landing():
     st.title("🩺 Beni Teşhis Et")
     st.markdown(f"Hoşgeldiniz, **{st.session_state.username}**! Klinik vaka çözümleme pratiğine başlayabilirsiniz.")
@@ -93,6 +112,7 @@ def show_landing():
         st.session_state.redirected = False
         st.rerun()
 
+# Sayfa yönlendirme
 if st.session_state.logged_in:
     if menu == "Ana Sayfa":
         show_landing()

@@ -1,7 +1,27 @@
 import streamlit as st
 from gemini_utils import get_patient_response
+import json
+from streamlit_lottie import st_lottie
 
-st.title("\U0001F9E0 Geri Bildirim")
+
+if not st.session_state.get("logged_in", False):
+    st.warning("Lütfen önce giriş yapın.")
+    st.stop()
+    
+
+st.title(" Geri Bildirim")
+
+def load_lottie_animation(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+animation = load_lottie_animation("animations/Feedback.json")
+
+st_lottie(animation, height=150, key="feedback")
+
+
+
+#st.title(" Geri Bildirim") 
 
 if "selected_case" not in st.session_state or not st.session_state.get("submitted_diagnosis"):
     st.warning("Lütfen önce bir vaka seçin ve tanınızı gönderin.")

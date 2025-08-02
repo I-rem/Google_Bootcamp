@@ -1,17 +1,34 @@
 # Submit_Diagnosis.py (Merged: voice_and_login + main)
 from supabase_client import insert_case_result
 import streamlit as st
+import json
+from streamlit_lottie import st_lottie
 from gemini_utils import (
     get_ai_feedback,
     is_diagnosis_correct_ai,
     get_clinical_score_ai
 )
 
-if "username" not in st.session_state:
+
+
+st.title("✅ Tanı Gönder")
+
+def load_lottie_animation(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+animation = load_lottie_animation("animations/Doctor.json")
+
+
+st_lottie(animation, height=150, key="doctor")
+
+
+if not st.session_state.get("logged_in", False):
     st.warning("Lütfen önce giriş yapın.")
     st.stop()
 
-st.title("✅ Tanı Gönder")
+
+#st.title("✅ Tanı Gönder")
 
 if "selected_case" not in st.session_state:
     st.warning("Lütfen önce bir vaka seçin.")

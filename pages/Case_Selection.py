@@ -3,14 +3,25 @@ import os
 import unicodedata
 import re
 import streamlit as st
+from streamlit_lottie import st_lottie
+import json
 
-if "username" not in st.session_state:
+if not st.session_state.get("logged_in", False):
     st.warning("Lütfen önce giriş yapın.")
     st.stop()
-
-username = st.session_state["username"]
+   
 
 st.title("📋 Vaka Seçimi")
+def load_lottie_animation(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+animation = load_lottie_animation("animations/Child selector.json")
+st_lottie(animation, height=300, key="child_selection")
+
+
+
+#st.title("📋 Vaka Seçimi")
 
 from cases import cases_by_department
 
@@ -22,7 +33,7 @@ def slugify_department_name(department_name):
     slug = re.sub(r'[^a-z0-9_]', '', slug)
     return slug
 
-st.markdown("### Bir Bölüm Seçin:")
+ #st.markdown("### Bir Bölüm Seçin:")
 
 num_cols = 4
 cols = st.columns(num_cols)
