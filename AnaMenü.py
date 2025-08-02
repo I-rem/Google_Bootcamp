@@ -42,7 +42,7 @@ else:
 # Giriş yaptıysa sayfaya yönlendir
 if st.session_state.logged_in and not st.session_state.redirected:
     st.session_state.redirected = True
-    st.switch_page("pages/Case_Selection.py")
+    st.switch_page("pages/Vaka_Seçimi.py")
 
 # Giriş ekranı
 def show_login():
@@ -56,7 +56,7 @@ def show_login():
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success(f"Hoşgeldiniz, {username}!")
-            st.switch_page("pages/Case_Selection.py")
+            st.switch_page("pages/Vaka_Seçimi.py")
         else:
             st.error("Kullanıcı adı veya şifre yanlış!")
 
