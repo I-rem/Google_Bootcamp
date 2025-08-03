@@ -1,6 +1,73 @@
-# How to run
+# 🩺 Beni Teşhis Et
 
-`pip install -r requirements`
+## Nedir Bu Uygulama?
+
+**Beni Teşhis Et**, tıp fakültesi öğrencilerinin klinik düşünme becerilerini geliştirmesi için hazırlanmış, etkileşimli bir **hasta simülasyon** uygulamasıdır.
+
+Uygulama, yapay zeka destekli sanal hastalarla diyalog kurmanıza, laboratuvar tetkikleri istemenize, tanınızı sunmanıza ve yapay zekadan detaylı geri bildirim almanıza olanak sağlar.
+
+---
+
+## 🚀 Özellikler
+
+- **Yapay Zeka ile Hasta Simülasyonu**  
+  Gerçekçi vakalarda sanal hastayla konuşabilir, klinik sorgulama yapabilirsiniz.
+
+- **Laboratuvar Testleri**  
+  Uygun tanıya ulaşmak için laboratuvar testleri isteyebilirsiniz.
+
+- **Tanı ve Yapay Zeka Geri Bildirimi**  
+  Tanınızı girin, yapay zeka hem doğruluğu hem de yaklaşımınızı analiz ederek puan ve geri bildirim versin.
+
+- **İstatistikler ve Skor Takibi**  
+  Geçmiş vaka performanslarınızı ve tanı doğruluk oranınızı görüntüleyin.
+
+- **Kullanıcı Girişi / Kayıt Sistemi**  
+  Kayıt olun, şifre sıfırlayın ve kişisel istatistiklerinizi koruyun.
+
+- **Sesli Hasta Cevapları**  
+  Hastanın verdiği cevaplar otomatik olarak sesli şekilde oynatılır.
+
+---
+
+## 🧠 Destekleyen Teknolojiler
+- Streamlit
+
+- Google Gemini API
+
+- Supabase
+
+- Python
+
+# Kurulum
+Hemen deneyin: https://beniteshiset.streamlit.app/
+
+veya
+
+1. **Projeyi klonlayın**
+
+   `git clone https://github.com/I-rem/Google_Bootcamp.git`
+   
+   `cd Google_Bootcamp`
+   
+2. **Sanal ortam oluşturun ve bağımlılıkları yükleyin**
+ 
+  `python -m venv .venv`
+
+  `source .venv/bin/activate`  # Windows için: .venv\Scripts\activate
+  
+  `pip install -r requirements.txt`
+  
+3. `.streamlit/secrets.toml` dosyasını oluşturun
+
+```bash
+[general]
+GEMINI_API_KEY = "your_google_gemini_api_key"
+SUPABASE_URL = "your_supabase_project_url"
+SUPABASE_KEY = "your_supabase_anon_or_service_key"
+```
+
+4. **Uygulamayı başlatın**
 
 `streamlit run app.py`
 
