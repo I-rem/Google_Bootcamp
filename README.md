@@ -52,24 +52,24 @@ veya
    
 2. **Sanal ortam oluşturun ve bağımlılıkları yükleyin**
  
-  `python -m venv .venv`
-
-  `source .venv/bin/activate`  # Windows için: .venv\Scripts\activate
+    `python -m venv .venv`
   
-  `pip install -r requirements.txt`
+    `source .venv/bin/activate`  # Windows için: .venv\Scripts\activate
+    
+    `pip install -r requirements.txt`
   
-3. `.streamlit/secrets.toml` dosyasını oluşturun
+3. `.streamlit/secrets.toml` **dosyasını oluşturun**
 
-```bash
-[general]
-GEMINI_API_KEY = "your_google_gemini_api_key"
-SUPABASE_URL = "your_supabase_project_url"
-SUPABASE_KEY = "your_supabase_anon_or_service_key"
-```
+  ```bash
+  [general]
+  GEMINI_API_KEY = "your_google_gemini_api_key"
+  SUPABASE_URL = "your_supabase_project_url"
+  SUPABASE_KEY = "your_supabase_anon_or_service_key"
+  ```
 
 4. **Uygulamayı başlatın**
 
-`streamlit run app.py`
+    `streamlit run app.py`
 
 # Takım
 ## Takım İsmi
