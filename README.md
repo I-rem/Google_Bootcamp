@@ -1,5 +1,7 @@
 # 🩺 Beni Teşhis Et
 
+https://github.com/user-attachments/assets/78fa1b4f-830c-4da9-a480-e6f7f827dd55
+
 ## Nedir Bu Uygulama?
 
 **Beni Teşhis Et**, tıp fakültesi öğrencilerinin klinik düşünme becerilerini geliştirmesi için hazırlanmış, etkileşimli bir **hasta simülasyon** uygulamasıdır.
@@ -7,6 +9,10 @@
 Uygulama, yapay zeka destekli sanal hastalarla diyalog kurmanıza, laboratuvar tetkikleri istemenize, tanınızı sunmanıza ve yapay zekadan detaylı geri bildirim almanıza olanak sağlar.
 
 ---
+
+
+
+
 
 ## 🚀 Özellikler
 
