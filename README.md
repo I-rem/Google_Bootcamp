@@ -2,6 +2,10 @@
 
 https://github.com/user-attachments/assets/78fa1b4f-830c-4da9-a480-e6f7f827dd55
 
+
+https://github.com/user-attachments/assets/06a40545-9256-43b6-b48b-8f876841037f
+
+
 ## Nedir Bu Uygulama?
 
 **Beni Teşhis Et**, tıp fakültesi öğrencilerinin klinik düşünme becerilerini geliştirmesi için hazırlanmış, etkileşimli bir **hasta simülasyon** uygulamasıdır.
